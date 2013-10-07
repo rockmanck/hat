@@ -2,6 +2,7 @@ package ru.game.hat;
 
 import android.app.Activity;
 import android.view.View;
+import android.widget.Button;
 
 public abstract class BaseActivity extends Activity {
 	@SuppressWarnings("unchecked")
@@ -17,5 +18,15 @@ public abstract class BaseActivity extends Activity {
 	protected void show(int id) {
 		final View hint = view(id);
 		hint.setVisibility(0);
+	}
+	
+	protected void disableButton(int id) {
+		final Button button = view(id);
+		button.setEnabled(false);
+	}
+	
+	protected void enableButton(int id) {
+		final Button button = view(id);
+		button.setEnabled(true);
 	}
 }

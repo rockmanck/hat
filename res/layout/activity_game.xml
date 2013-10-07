@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,11 +6,98 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".GameActivity" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/explainWord"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+	    <TextView
+	        android:id="@+id/playerName"
+	        android:layout_weight="1"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text=""
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+ 		
+ 		<TextView
+            android:id="@+id/space1"
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"/>
+ 		
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:gravity="center" />
+        
+        <TextView
+            android:id="@+id/space2"
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"/>
+
+        <TextView
+            android:id="@+id/wordView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="38sp"
+            android:gravity="center" />
+        
+        <TextView
+            android:id="@+id/space3"
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"/>
+        
+        <Button
+            android:id="@+id/guessButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/guess_button"
+            android:onClick="wordGuessed" />
+        <TextView
+            android:id="@+id/nextPlayerMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textSize="12sp"/>
+        <Button
+            android:id="@+id/nextPlayerButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/next_button"
+            android:visibility="gone"
+            android:onClick="nextPlayer" />
+        
+        <TextView
+            android:id="@+id/space4"
+            android:layout_width="fill_parent"
+            android:layout_height="12dp"/>
+        
+        <Button
+            android:id="@+id/gameOver"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/game_over" />
+    </LinearLayout>
+
+</LinearLayout>

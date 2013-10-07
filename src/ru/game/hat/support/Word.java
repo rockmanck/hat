@@ -13,24 +13,37 @@ public class Word {
 		return id;
 	}
 
-	public String getWord() {
+	public String text() {
 		return word;
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-
-		Word word1 = (Word) o;
-
-		if (word != null ? !word.equals(word1.word) : word1.word != null) return false;
-
-		return true;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((word == null) ? 0 : word.hashCode());
+		return result;
 	}
 
 	@Override
-	public int hashCode() {
-		return word != null ? word.hashCode() : 0;
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Word other = (Word) obj;
+		if (id != other.id)
+			return false;
+		if (word == null) {
+			if (other.word != null)
+				return false;
+		} else if (!word.equals(other.word))
+			return false;
+		return true;
 	}
+
+	
 }

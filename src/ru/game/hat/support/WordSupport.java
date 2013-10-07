@@ -1,25 +1,14 @@
 package ru.game.hat.support;
 
-import static ru.game.hat.support.Lang.ENG;
-import static ru.game.hat.support.Lang.RUS;
-
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Activity;
+import android.util.SparseArray;
+
 public class WordSupport {
-	// TODO use assets here!
-	public static final String ROOT_DIR = "g:/project/notandroid/shlyapa/";
-	public static final File RU_FOLDER = new File(ROOT_DIR + RUS.getDesc());
-	public static final File EN_FOLDER = new File(ROOT_DIR + ENG.getDesc());
-	public static final String DEFAULT_ENCODING = "utf-8";
-
-	private static Words words = new Words(RUS);
-
-	static {
-		RU_FOLDER.mkdirs();
-		EN_FOLDER.mkdirs();
-	}
+	private static Words words = null;
+	
 	/**
 	 * Builder for word support
 	 * @param wordsCount count words for one game
@@ -27,9 +16,9 @@ public class WordSupport {
 	 * @param lang language of words
 	 * @return support for one game
 	 */
-	public static Game newGame(int wordsCount, Level level, Lang lang) throws Exception {
-		if (lang != words.getLang()) {
-			words = new Words(lang);
+	public static Game newGame(int wordsCount, Level level, Lang lang, Activity activity, SparseArray<String> players) throws Exception {
+		if (words == null || lang != words.getLang()) {
+			words = new Words(lang, activity);
 		}
 		final List<Word> wordList;
 		try {
@@ -37,29 +26,7 @@ public class WordSupport {
 		} catch (Exception e) {
 			throw new RuntimeException("Failed to get words", e);
 		}
-		return new Game(wordList);
-	}
-
-	public static final class Game {
-
-		private final int gameSize;
-		private final List<Word> words;
-		private int index = 0;
-
-		private Game(List<Word> words) {
-			this.gameSize = words.size();
-			this.words = words;
-		}
-
-		public boolean hasWord() {
-			return index < gameSize;
-		}
-
-		public Word next() {
-			final Word word = words.get(index);
-			index += 1;
-			return word;
-		}
+		return new Game(wordList, players);
 	}
 
 	public static long wordToNumber(String value, Lang lang) {

@@ -10,6 +10,8 @@
     <string name="start">Начать игру</string>
     <string name="typeTeam">Командная</string>
     <string name="typeRound">По кругу</string>
+    
+    <string name="explainWord">Объясняет:</string>
 
     <string-array name="levelsArray">
         <item>Простой</item>
@@ -20,6 +22,9 @@
     <string name="title_activity_game">Шляпа: Игра</string>
     <string name="win_button">Угадали</string>
     <string name="next_button">Поехали</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="guess_button">Объяснил</string>
+    <string name="default_timer">30</string>
+    <string name="game_over">Закончить игру</string>
+    <string name="next_player_message">Передайте устройство следующему: </string>
 
 </resources>

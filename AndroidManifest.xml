@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -18,18 +18,19 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="ru.game.hat.GameActivity"
             android:label="@string/title_activity_game"
-            android:parentActivityName="ru.game.hat.MainActivity">
+            >
             
+            <!-- android:parentActivityName="ru.game.hat.MainActivity" 
             <meta-data
 	            android:name="android.support.PARENT_ACTIVITY"
 	            android:value="ru.game.hat.MainActivity" />
+	            -->
         </activity>
     </application>
 

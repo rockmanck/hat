@@ -1,19 +1,36 @@
 package ru.game.hat.support;
 
-import java.io.*;
-import java.util.*;
+import static ru.game.hat.support.Lang.ENG;
+import static ru.game.hat.support.Lang.RUS;
 
-import static ru.game.hat.support.WordSupport.DEFAULT_ENCODING;
-import static ru.game.hat.support.WordSupport.ROOT_DIR;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+import android.app.Activity;
+import android.content.res.AssetManager;
 
 public class Words {
+	public static final File RU_FOLDER = new File(RUS.getDesc());
+	public static final File EN_FOLDER = new File(ENG.getDesc());
+	public static final String DEFAULT_ENCODING = "utf-8";
+	
 	private final Lang lang;
+	private final Activity activity;
 	private List<Word> lowWords;
 	private List<Word> normalWords;
 	private List<Word> highWords;
 	
-	public Words(Lang lang) {
+	public Words(Lang lang, Activity activity) {
 		this.lang = lang;
+		this.activity = activity;
 	}
 	
 	private List<Word> get(Level level) throws Exception {
@@ -41,12 +58,14 @@ public class Words {
 	 * Reads words for level from data file.
 	 */
 	private List<Word> words(Level level) throws Exception {
+		final AssetManager assets = activity.getAssets();
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(getFileName(level)), DEFAULT_ENCODING));
+			final InputStream stream = assets.open(getFileName(level));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(stream, DEFAULT_ENCODING));
 			String line = reader.readLine();
 			final List<Word> result = new ArrayList<Word>();
-
-			String[] split = line.split("|");
+			
+			String[] split = line.split("\\|");
 			for (String val : split) {
 				final List<String> pairs = Arrays.asList(val.split("~"));
 				final Long id = Long.valueOf(pairs.get(0));
@@ -55,6 +74,7 @@ public class Words {
 			}
 
 			Collections.shuffle(result);
+			stream.close();
 			reader.close();
 			return result;
 		} catch (IOException io) {
@@ -65,7 +85,7 @@ public class Words {
 	}
 
 	private String getFileName(Level level) {
-		return ROOT_DIR + lang.getDesc() + "/" + level.desc();
+		return lang.getDesc() + "/" + level.desc();
 	}
 
 	public Lang getLang() {
