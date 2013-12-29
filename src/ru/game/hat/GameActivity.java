@@ -10,11 +10,13 @@ import android.os.CountDownTimer;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class GameActivity extends BaseActivity {
 	
 	private static final int TIMER_PERIOD = 1000;
+	private static final int GUESS_BUTTON_TIMEOUT = 4;
 	private Game game;
 	private CountDownTimer timer;
 	
@@ -52,6 +54,7 @@ public class GameActivity extends BaseActivity {
 	private void changeWord() {
 		final TextView wordView = view(R.id.wordView);
 		wordView.setText(game.nextWord().text());
+		disableGuessButton();
 	}
 
 	private String changePlayer() {
@@ -61,17 +64,34 @@ public class GameActivity extends BaseActivity {
 		return name;
 	}
 	
+	int enableButtonTicks;
+	private void enableButtonOnTimerTick() {
+		enableButtonTicks -= 1;
+		if (enableButtonTicks == 0) {
+			final Button guessButton = view(R.id.guessButton);
+			guessButton.setEnabled(true);
+		}
+	}
+	
+	private void disableGuessButton() {
+		final Button guessButton = view(R.id.guessButton);
+		guessButton.setEnabled(false);
+		enableButtonTicks = GUESS_BUTTON_TIMEOUT;
+	}
+	
 	private void newTimer() {
 		final TextView timerView = view(R.id.timerText);
 		final String defaultTime = getString(R.string.default_timer);
 		timerView.setText(defaultTime); // TODO rework for preferences
 		final Integer time = Integer.valueOf(defaultTime) * 1000;
+		disableGuessButton(); // disable button guessed word for a GUESS_BUTTON_TIMEOUT seconds
 		
 		timer = new CountDownTimer(time, TIMER_PERIOD) {
-			// TODO disable button guessed word for a 5 seconds 
+			
 			@Override
 			public void onTick(long millisUntilFinished) {
 				timerView.setText(String.valueOf(millisUntilFinished / TIMER_PERIOD));
+				enableButtonOnTimerTick();
 			}
 			
 			@Override
@@ -107,14 +127,17 @@ public class GameActivity extends BaseActivity {
 		} else {
 			game.finish();
 			timer.cancel();
-			gameOver();
+			gameOver((View)view(R.id.gameOver));
 		}
 	}
 	
-	private void gameOver() {
-		// TODO open game over activity with results
+	public void gameOver(View view) {
+		// open game over activity with results
+		final Intent intent = new Intent(this, ru.game.hat.ResultActivity.class);
 		final Bundle bundle = new Bundle();
-		bundle.putSerializable("results", game.getResults());
+		bundle.putString(getString(R.string.game_results), game.getResults());
+		intent.putExtra(getString(R.string.game_bundle), bundle);
+		startActivity(intent);
 	}
 
 	@Override

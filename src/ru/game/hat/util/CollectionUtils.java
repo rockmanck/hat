@@ -16,4 +16,17 @@ public class CollectionUtils {
 	public static interface Function<A,B> {
 		B apply(A input);
 	}
+	
+	public static String join(Collection<String> collection, String separator) {
+		final StringBuilder sb = new StringBuilder();
+		boolean sep = false;
+		for (String val : collection) {
+			if (sep) {
+				sb.append(separator);
+			}
+			sb.append(val);
+			sep = true;
+		}
+		return sb.toString();
+	}
 }

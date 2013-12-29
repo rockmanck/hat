@@ -10,4 +10,9 @@
     <string name="game_word_count">ru.game.hat.game_word_count</string>
     <string name="game_level">ru.game.hat.game_level</string>
     <string name="game_timer">ru.game.hat.game_timer</string>
+    <string name="game_results">ru.game.hat.game_results</string>
+        
+    <string name="result_sep">~</string>
+    <string name="result_value_sep">=</string>
+    <string name="line_sep">\n</string>
 </resources>

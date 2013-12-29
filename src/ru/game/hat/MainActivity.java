@@ -178,7 +178,6 @@ public class MainActivity extends BaseActivity implements OnItemSelectedListener
 	}
 	
 	public void startGame(View view) {
-	    // Do something in response to button
 		final Intent intent = new Intent(this, ru.game.hat.GameActivity.class);
 		final Bundle bundle = new Bundle();
 //		bundle.putSparseParcelableArray(getString(R.string.game_players), players);

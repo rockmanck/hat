@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
+import static ru.game.hat.util.CollectionUtils.*;
 import android.util.SparseArray;
 
 public final class Game {
@@ -76,10 +76,19 @@ public final class Game {
 		p.setPoints(p.getPoints() + 1);
 	}
 
-	public GameResults getResults() {
+	/**
+	 * Returns string representation of game results. i.e. Player1=4.0~Player2=6.3~... and so on.
+	 * @return
+	 */
+	public String getResults() {
 		final List<PlayerResult> values = new ArrayList<PlayerResult>(points.values());
 		Collections.sort(values);
-		return new GameResults(values);
+		return join(transform(values, new Function<PlayerResult, String>() {
+			@Override
+			public String apply(PlayerResult input) {
+				return input.getName() + "=" + input.getPoints();
+			}
+		}), "~");
 	}
 
 }
