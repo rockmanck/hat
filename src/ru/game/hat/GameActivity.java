@@ -27,17 +27,21 @@ public class GameActivity extends BaseActivity {
 		
 		final Intent intent = getIntent();
 		final Bundle bundle = intent.getBundleExtra(getString(R.string.game_bundle));
+		final String playerNames = bundle.getString(getString(R.string.game_players));
 		
 		// for test purposes:
-		final int wordCount = 20;
-		final Level level = Level.NORMAL;
+//		final int wordCount = 20;
+//		final Level level = Level.NORMAL;
 		
-//		final int wordCount = bundle.getInt(getString(R.string.game_word_count));
-//		final Level level = Level.valueOf(bundle.getString(getString(R.string.game_level)));
+		final int wordCount = bundle.getInt(getString(R.string.game_word_count));
+		final String levelName = bundle.getString(getString(R.string.game_level));
+		final Level level = Level.valueOf(levelName);
 		final Lang lang = Lang.RUS;
 		final SparseArray<String> players = new SparseArray<String>();
-		for (int i = 1; i <= 5; i += 1) {
-			players.put(i, "player" + i);
+		int i = 0;
+		for (String player: playerNames.split(",")) {
+			players.put(i, player);
+			i += 1;
 		}
 		
 		try {
@@ -50,7 +54,7 @@ public class GameActivity extends BaseActivity {
 			throw new RuntimeException("Failed to create game", e);
 		}
 	}
-
+	
 	private void changeWord() {
 		final TextView wordView = view(R.id.wordView);
 		wordView.setText(game.nextWord().text());
@@ -146,5 +150,8 @@ public class GameActivity extends BaseActivity {
 		getMenuInflater().inflate(R.menu.game, menu);
 		return true;
 	}
+	
+	@Override
+	public void onBackPressed() {}
 
 }

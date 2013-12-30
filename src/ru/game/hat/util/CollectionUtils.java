@@ -2,6 +2,9 @@ package ru.game.hat.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
+import android.util.SparseArray;
 
 public class CollectionUtils {
 
@@ -28,5 +31,13 @@ public class CollectionUtils {
 			sep = true;
 		}
 		return sb.toString();
+	}
+	
+	public static <T> Collection<T> sparseValues(SparseArray<T> array) {
+		final List<T> result = new ArrayList<T>();
+		for (int i = 0; i < array.size(); i += 1) {
+			result.add(array.valueAt(i));
+		}
+		return result;
 	}
 }

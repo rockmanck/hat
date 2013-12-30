@@ -43,4 +43,7 @@ public class ResultActivity extends BaseActivity {
 		
 		return sb.toString();
 	}
+	
+	@Override
+	public void onBackPressed() {}
 }

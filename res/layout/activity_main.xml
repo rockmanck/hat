@@ -73,11 +73,15 @@
     
     
     <!-- **************************** PLAYER CONTAINER ******************************* -->
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
     <LinearLayout
         android:id="@+id/playersContainer"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
+        
 	    <LinearLayout
 	        android:id="@+id/player1"
 	        android:layout_width="match_parent"
@@ -97,7 +101,7 @@
 	            style="?android:attr/buttonStyleSmall"
 	            android:layout_width="50dp"
 	            android:layout_height="wrap_content"
-	            android:text="del"
+	            android:text="X"
 	            android:onClick="delPlayer" />
 	    </LinearLayout>
 
@@ -121,7 +125,7 @@
 	            style="?android:attr/buttonStyleSmall"
 	            android:layout_width="50dp"
 	            android:layout_height="wrap_content"
-	            android:text="del"
+	            android:text="X"
 	            android:onClick="delPlayer" />
 	    </LinearLayout>
 
@@ -145,7 +149,7 @@
 	            style="?android:attr/buttonStyleSmall"
 	            android:layout_width="50dp"
 	            android:layout_height="wrap_content"
-	            android:text="del"
+	            android:text="X"
 	            android:onClick="delPlayer" />
 		    </LinearLayout>
 
@@ -169,10 +173,203 @@
 	            style="?android:attr/buttonStyleSmall"
 	            android:layout_width="50dp"
 	            android:layout_height="wrap_content"
-	            android:text="del"
+	            android:text="X"
 	            android:onClick="delPlayer" />
-		    </LinearLayout>
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/player5"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+	        <EditText
+	            android:id="@+id/playerText5"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dp"
+	            android:ems="10"
+	            android:inputType="textPersonName" >
+	            <requestFocus />
+	        </EditText>
+	        <Button
+	            android:id="@+id/deleteUser5"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:onClick="delPlayer" />
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/player6"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+	        <EditText
+	            android:id="@+id/playerText6"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dp"
+	            android:ems="10"
+	            android:inputType="textPersonName" >
+	            <requestFocus />
+	        </EditText>
+	        <Button
+	            android:id="@+id/deleteUser6"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:onClick="delPlayer" />
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/player7"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+	        <EditText
+	            android:id="@+id/playerText7"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dp"
+	            android:ems="10"
+	            android:inputType="textPersonName" >
+	            <requestFocus />
+	        </EditText>
+	        <Button
+	            android:id="@+id/deleteUser7"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:onClick="delPlayer" />
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/player8"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+	        <EditText
+	            android:id="@+id/playerText8"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dp"
+	            android:ems="10"
+	            android:inputType="textPersonName" >
+	            <requestFocus />
+	        </EditText>
+	        <Button
+	            android:id="@+id/deleteUser8"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:onClick="delPlayer" />
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/player9"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+	        <EditText
+	            android:id="@+id/playerText9"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dp"
+	            android:ems="10"
+	            android:inputType="textPersonName" >
+	            <requestFocus />
+	        </EditText>
+	        <Button
+	            android:id="@+id/deleteUser9"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:onClick="delPlayer" />
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/player10"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+	        <EditText
+	            android:id="@+id/playerText10"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dp"
+	            android:ems="10"
+	            android:inputType="textPersonName" >
+	            <requestFocus />
+	        </EditText>
+	        <Button
+	            android:id="@+id/deleteUser10"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:onClick="delPlayer" />
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/player11"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+	        <EditText
+	            android:id="@+id/playerText11"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dp"
+	            android:ems="10"
+	            android:inputType="textPersonName" >
+	            <requestFocus />
+	        </EditText>
+	        <Button
+	            android:id="@+id/deleteUser11"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:onClick="delPlayer" />
+		</LinearLayout>
+		
+	    <LinearLayout
+	        android:id="@+id/player12"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+	        <EditText
+	            android:id="@+id/playerText12"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dp"
+	            android:ems="10"
+	            android:inputType="textPersonName" >
+	            <requestFocus />
+	        </EditText>
+	        <Button
+	            android:id="@+id/deleteUser12"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:onClick="delPlayer" />
+		</LinearLayout>
     </LinearLayout>
+    </ScrollView>
     <!-- ****************************************************************************************************** -->
     
     

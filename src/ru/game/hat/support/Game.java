@@ -2,9 +2,7 @@ package ru.game.hat.support;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import static ru.game.hat.util.CollectionUtils.*;
 import android.util.SparseArray;
@@ -16,7 +14,7 @@ public final class Game {
 	private final Random random = new Random();
 	private final int playersCount;
 	private final SparseArray<String> players;
-	private Map<Integer, PlayerResult> points = new HashMap<Integer, PlayerResult>();
+	private SparseArray<PlayerResult> points = new SparseArray<PlayerResult>();
 	
 	private int count = 0;
 	private int activePlayer = 0;
@@ -59,7 +57,7 @@ public final class Game {
 	}
 
 	public String nextPlayer() {
-		activePlayer = activePlayer + 1 > playersCount ? 1 : activePlayer + 1;
+		activePlayer = activePlayer + 1 >= playersCount ? 0 : activePlayer + 1;
 		return players.get(activePlayer);
 	}
 
@@ -81,7 +79,7 @@ public final class Game {
 	 * @return
 	 */
 	public String getResults() {
-		final List<PlayerResult> values = new ArrayList<PlayerResult>(points.values());
+		final List<PlayerResult> values = new ArrayList<PlayerResult>(sparseValues(points));
 		Collections.sort(values);
 		return join(transform(values, new Function<PlayerResult, String>() {
 			@Override
